@@ -3,7 +3,7 @@ module.exports = class Database{
   	}
 
   	save(exchange){
-  		console.log('----- Database ------');
+  		console.log('----- Save Exchange ------');
   		console.log(exchange)
   	}
 }

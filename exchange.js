@@ -1,9 +1,7 @@
-const User = require('./user.js')
-const Product = require('./product.js')
 const Mailer = require('./service/mailer.js')
 const Database = require('./service/database.js')
 
-class Exchange{
+module.exports = class Exchange{
 	constructor(receiver,product,startDate,endDate){
 		this.receiver = receiver;
 		this.product = product;
@@ -15,10 +13,15 @@ class Exchange{
 	}
 
 	save(){
+		if(!this.receiver.isValidAge()){
+			this.Mailer.send(this.receiver.mail);
+			return true
+		}
 		if(this.receiver.isValid() || this.product.isValid() && this.isValidDateInterval()){
 			this.db.save(this)
+			return true
 		}
-		if(!this.receiver.isValidAge()) this.Mailer.send(receiver)
+		return false
 	}
 
 	isValidDateInterval(){
@@ -28,10 +31,3 @@ class Exchange{
 		return true
 	}
 }
-
-let receiver = new User('jerome.bueno@hotmail.fr','jerome','bueno','22');
-let owner = new User('test.owner@hotmail.fr','test','owner','17');
-let product = new Product('mail',owner)
-
-let exchange = new Exchange(receiver,product,'2019-04-30','2019-04-30')
-exchange.save()

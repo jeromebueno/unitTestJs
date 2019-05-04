@@ -1,7 +1,21 @@
-const User = require('../user.js');
+const Product = require('../product.js')
+const User = require('../user.js')
 
-let user = new User('jerome','j','b','1');
+let unvalidOwner = new User('testownerhotmail.fr','test','owner','17');
+let unvalidProduct = new Product('',unvalidOwner)
 
-test('not valid user', () => {
-    expect(user.isValid()).toBe(false);
+let validOwner = new User('test.owner@hotmail.fr','test','owner','17');
+let validProduct = new Product('mail',unvalidOwner)
+
+test('not valid product caused by product', () => {
+    expect(unvalidProduct.isValid()).toBe(false);
+});
+
+test('not valid product caused by owner', () => {
+    expect(validProduct.isValid()).toBe(false);
+});
+
+validProduct._owner = validOwner
+test('valid product', () => {
+    expect(validProduct.isValid()).toBe(true);
 });
