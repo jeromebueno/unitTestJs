@@ -7,7 +7,6 @@ module.exports = class User{
   	}
 
   	isValid(){
-      console.log(this)
       if (!this.isValidEmail() || !this.isValidName() || !this.isValidAge()){
         return false
       }

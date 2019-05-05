@@ -12,7 +12,6 @@ module.exports = class Mailer{
   	}
 
   	send(userEmail){
-		console.log('mail send')
 		var mailOptions = {
 			from: 'insteat@gmail.com',
 			to: userEmail,

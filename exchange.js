@@ -17,7 +17,7 @@ module.exports = class Exchange{
 			this.Mailer.send(this.receiver.mail);
 			return true
 		}
-		if(this.receiver.isValid() || this.product.isValid() && this.isValidDateInterval()){
+		if(this.receiver.isValid() && this.product.isValid() && this.isValidDateInterval()){
 			this.db.save(this)
 			return true
 		}

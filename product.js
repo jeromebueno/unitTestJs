@@ -10,7 +10,7 @@ module.exports = class Product{
       return this._owner;
     }
 
-    set owner(owner) {
+  set owner(owner) {
       this._owner = owner;
     }
 
