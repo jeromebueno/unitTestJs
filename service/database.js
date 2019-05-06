@@ -1,9 +1,15 @@
 module.exports = class Database{
-	constructor() {
+	constructor(database, host, user, password) {
+		this.database = database;
+		this.host = host;
+		this.user = user;
+		this.password = password;
   	}
+
 
   	save(exchange){
   		console.log('----- Save Exchange ------');
-  		console.log(exchange)
+  		return (exchange)
   	}
+
 }

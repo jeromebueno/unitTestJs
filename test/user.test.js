@@ -3,6 +3,7 @@ const User = require('../user.js');
 let unvalidUser = new User('jerome','','bueno','1');
 let validUser = new User('jerome.bueno@hotmail.fr','jerome','bueno','22');
 
+
 test('not valid email', () => {
     expect(unvalidUser.isValidEmail()).toBe(false);
 });
@@ -26,3 +27,7 @@ test('not valid user', () => {
 test('valid user', () => {
     expect(validUser.isValid()).toBe(true);
 });
+
+
+
+

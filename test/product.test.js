@@ -11,11 +11,12 @@ test('not valid product caused by product', () => {
     expect(unvalidProduct.isValid()).toBe(false);
 });
 
-test('not valid product caused by owner', () => {
-    expect(validProduct.isValid()).toBe(false);
+test(' valid product', () => {
+    expect(validProduct.isValid()).toBe(true);
 });
 
 validProduct._owner = validOwner
 test('valid product', () => {
     expect(validProduct.isValid()).toBe(true);
 });
+
