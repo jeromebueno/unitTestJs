@@ -20,6 +20,11 @@ mockMailer.mockImplementation(() => {
   }
 });
 
+afterEach(() => {
+  mMock.mockClear();
+  dMock.mockClear()
+});
+
 let mailer = new mockMailer()
 let database = new mockDatabase()
 
@@ -41,6 +46,8 @@ let validExchange = new Exchange(receiver,product,'2019-05-30','2019-05-30')
 describe('When receiver is major', () => {
   it('Should return true after save in database', () => {
     expect(validExchange.save()).toEqual(true);
+    expect(mailer.send).not.toHaveBeenCalled();
+    expect(database.save).toHaveBeenCalled();
   });
 });
 
@@ -50,4 +57,9 @@ describe('When exchange is not correct', () => {
   it('Should return false', () => {
     expect(unvalidExchange.save()).toEqual(false);
   });
+});
+
+let passedExchange = new Exchange(receiver,nullProduct,'2019-04-30','2019-05-30')
+test('exchange date passed', () => {
+  expect(passedExchange.isValidDateInterval()).toBe(false);
 });
