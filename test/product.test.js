@@ -4,14 +4,11 @@ const User = require('../user.js')
 let unvalidOwner = new User('testownerhotmail.fr','test','owner','11');
 let unvalidProduct = new Product('',unvalidOwner)
 
-
-
 let validOwner = new User('test.owner@hotmail.fr','test','owner','17');
 let validProduct = new Product('mail',unvalidOwner)
 
 let unvalidProductNull = new Product(null,validOwner)
 let unvalidProductEmpty = new Product('',validOwner)
-let unvalidProductOwner = new Product('dylan',unvalidOwner)
 
 test('not valid product caused by product', () => {
     expect(unvalidProduct.isValid()).toBe(false);
@@ -24,12 +21,6 @@ test('not valid product caused by product null', () => {
 test('not valid product caused by product empty', () => {
     expect(unvalidProductEmpty.isValid()).toBe(false);
 });
-
-test('not valid product caused by product owner', () => {
-    expect(unvalidProductOwner.isValid()).toBe(false);
-});
-
-
 
 test('not valid product caused by owner', () => {
     expect(validProduct.isValid()).toBe(false);
