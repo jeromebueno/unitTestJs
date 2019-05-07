@@ -9,6 +9,13 @@ let unvalidUserNameNull = new User('dylan',null,null,'1');
 let validUser = new User('jerome.bueno@hotmail.fr','jerome','bueno','22');
 let unvalidUserAge = new User('jerome.bueno@hotmail.fr','jerome','bueno','12');
 
+let firstnameNull = new User('dylan@gmail.com',null,'settbon','13');
+let firstnameEmpty = new User('dylan@gmail.com','','settbon','13');
+let lastnameNull = new User('dylan@gmail.com','dylan',null,'13');
+let lastnameEmpty = new User('dylan@gmail.com','dylan','','13');
+
+let unvalidAll = new User('dylan@gmail.com','','','11');
+
 test('not valid email', () => {
     expect(unvalidUser.isValidEmail()).toBe(false);
 });
@@ -59,3 +66,26 @@ test('valid user', () => {
 });
 
 
+test('not valid user firstname null', () => {
+    expect(firstnameNull.isValid()).toBe(false);
+});
+test('not valid user firstname empty', () => {
+    expect(firstnameEmpty.isValid()).toBe(false);
+});
+
+test('not valid user', () => {
+    expect(unvalidUser.isValid()).toBe(false);
+});
+test('not valid user lastname null', () => {
+    expect(lastnameNull.isValid()).toBe(false);
+});
+test('not valid user lastname null', () => {
+    expect(lastnameEmpty.isValid()).toBe(false);
+});
+
+test('not valid user', () => {
+    expect(unvalidAll.isValid()).toBe(false);
+});
+test('not valid user age', () => {
+    expect(unvalidUserAge.isValid()).toBe(false);
+});
